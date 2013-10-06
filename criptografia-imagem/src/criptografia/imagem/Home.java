@@ -18,10 +18,12 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         
+        
+     
        setTitle("Projeto Internet Web");
        setResizable(false);
-       setAlwaysOnTop(true);
        initComponents();
+       setLocationRelativeTo(null);  
       
        
        
@@ -52,6 +54,11 @@ public class Home extends javax.swing.JFrame {
         labelBemVindo.setVerifyInputWhenFocusTarget(false);
 
         botaoCriptografar.setText("Criptografar");
+        botaoCriptografar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCriptografarActionPerformed(evt);
+            }
+        });
 
         botaoDescriptografar.setText("Descriptografar");
 
@@ -111,6 +118,15 @@ public class Home extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botaoCriptografarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCriptografarActionPerformed
+      TelaCriptografia tela2=new TelaCriptografia();
+         
+      tela2.setVisible(true);  
+      tela2.setAlwaysOnTop(true);  
+      setVisible(false);  
+      
+    }//GEN-LAST:event_botaoCriptografarActionPerformed
 
     /**
      * @param args the command line arguments
