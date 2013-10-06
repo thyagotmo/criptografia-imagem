@@ -4,6 +4,7 @@
  */
 package criptografia.imagem.impl;
 
+import criptografia.imagem.gui.TelaCriptografia;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -20,11 +21,13 @@ import javax.imageio.ImageIO;
  */
 public class Codificacao {
 
-    public static void main(String[] args) {
+    public boolean codificarImagem(String origem,String destino,String texto) {
+            
+        
+        File file = new File(origem);
 
-        File file = new File("E:\\1.bmp");
-
-        String texto = "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ";
+        
+        //String texto = "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ";
 
         try {
             BufferedImage imagem = ImageIO.read(file);
@@ -112,10 +115,11 @@ public class Codificacao {
                 imagem.setRGB(j, i, corAlterada.getRGB());
             }
 
-            ImageIO.write(imagem, "BMP", new File("E:\\2.bmp"));
+            ImageIO.write(imagem, "BMP", new File(destino));
+            return true;
 
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace();return false;
         }
     }
 }

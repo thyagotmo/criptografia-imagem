@@ -4,8 +4,10 @@
  */
 package criptografia.imagem.gui;
 
+import criptografia.imagem.impl.Codificacao;
 import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -24,6 +26,8 @@ public class TelaCriptografia extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         FileNameExtensionFilter filter = new FileNameExtensionFilter("BMP Images", "bmp");
         jFileChooser1.setFileFilter(filter);
+
+
 
     }
 
@@ -171,7 +175,7 @@ public class TelaCriptografia extends javax.swing.JFrame {
     }//GEN-LAST:event_voltarActionPerformed
 
     private String selecionarArquivoBMP() {
-       
+
 
         int returnValue = jFileChooser1.showOpenDialog(this);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
@@ -186,30 +190,36 @@ public class TelaCriptografia extends javax.swing.JFrame {
     }
 
     private void selecionarDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionarDestinoActionPerformed
-              
-            this.localDestino.setText(selecionarArquivoBMP());
-       
+
+        this.localDestino.setText(selecionarArquivoBMP());
+
     }//GEN-LAST:event_selecionarDestinoActionPerformed
 
     private void selecionarOrigemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionarOrigemActionPerformed
 
-           this.localOrigem.setText(selecionarArquivoBMP());
+        this.localOrigem.setText(selecionarArquivoBMP());
 
     }//GEN-LAST:event_selecionarOrigemActionPerformed
 
     private void gerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarActionPerformed
-        
-        String caminhoOrigem=this.localOrigem.getText();
-        String caminhoDestino=this.localDestino.getText();
-        String texto=this.texto.getText();
-        
-        
-        
+
+        String caminhoOrigem = this.localOrigem.getText();
+        String caminhoDestino = this.localDestino.getText();
+        String textoDigitado = this.texto.getText();
+
+        Codificacao c = new Codificacao();
+
+
+        boolean verificar = c.codificarImagem(caminhoOrigem, caminhoDestino, textoDigitado);
+
+        if (verificar) {
+            JOptionPane.showMessageDialog(this, "Sua mensagem foi criptografada com sucesso!", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Ocorreu um erro ao criptografar a mensagem!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_gerarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
