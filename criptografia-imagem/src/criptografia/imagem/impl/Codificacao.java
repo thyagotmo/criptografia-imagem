@@ -18,7 +18,7 @@ import javax.imageio.ImageIO;
  *
  * @author Thy
  */
-public class MainCodificar {
+public class Codificacao {
 
     public static void main(String[] args) {
 
@@ -29,8 +29,8 @@ public class MainCodificar {
         try {
             BufferedImage imagem = ImageIO.read(file);
 
-            int widht = imagem.getWidth(); //linha (variação X)
-            int height = imagem.getHeight(); // coluna (variação Y)
+            int widht = imagem.getWidth(); //linha (variaï¿½ï¿½o X)
+            int height = imagem.getHeight(); // coluna (variaï¿½ï¿½o Y)
 
             int quantidadePixels = widht * height;
             int quantidadeLetras = texto.length();

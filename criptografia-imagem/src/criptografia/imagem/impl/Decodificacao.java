@@ -14,7 +14,7 @@ import javax.imageio.ImageIO;
  *
  * @author Thy
  */
-public class MainDecodificar {
+public class Decodificacao {
 
     public static void main(String[] args) {
 
@@ -23,8 +23,8 @@ public class MainDecodificar {
         try {
             BufferedImage imagem = ImageIO.read(file);
 
-            int widht = imagem.getWidth(); //linha (variação X)
-            int height = imagem.getHeight(); // coluna (variação Y)
+            int widht = imagem.getWidth(); //linha (variaï¿½ï¿½o X)
+            int height = imagem.getHeight(); // coluna (variaï¿½ï¿½o Y)
 
 
             for (int i = 0; i < height; i++) {
