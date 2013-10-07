@@ -61,6 +61,11 @@ public class Home extends javax.swing.JFrame {
         });
 
         botaoDescriptografar.setText("Descriptografar");
+        botaoDescriptografar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoDescriptografarActionPerformed(evt);
+            }
+        });
 
         creditos.setText("Criado por:");
 
@@ -127,6 +132,15 @@ public class Home extends javax.swing.JFrame {
       setVisible(false);  
       
     }//GEN-LAST:event_botaoCriptografarActionPerformed
+
+    private void botaoDescriptografarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDescriptografarActionPerformed
+      TelaDescriptografia tela3=new TelaDescriptografia();
+      tela3.setVisible(true);  
+      tela3.setAlwaysOnTop(true);  
+      setVisible(false);
+        
+        
+    }//GEN-LAST:event_botaoDescriptografarActionPerformed
 
     /**
      * @param args the command line arguments

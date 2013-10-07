@@ -27,7 +27,7 @@ public class Codificacao {
         File file = new File(origem);
 
         
-        //String texto = "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ";
+       
 
         try {
             BufferedImage imagem = ImageIO.read(file);
