@@ -16,10 +16,10 @@ import javax.imageio.ImageIO;
  */
 public class Decodificacao {
 
-    public static void main(String[] args) {
+    public String decodificacao(String origem) {
 
-        File file = new File("E:\\2.bmp");
-
+        File file = new File(origem);
+        String resultado = "";
         try {
             BufferedImage imagem = ImageIO.read(file);
 
@@ -69,7 +69,7 @@ public class Decodificacao {
                         int mediaRed = (corAnterior.getRed() + corPosterior.getRed()) / 2;
 
                         int valorRedComMedia = corPixel.getRed();
-                        
+
                         int numero;
 
                         if (mediaRed > 128) {
@@ -83,7 +83,8 @@ public class Decodificacao {
 
                         char letra = (char) numero;
 
-                        System.out.print(letra);
+                        resultado += letra;
+
 
                     }
 
@@ -97,5 +98,7 @@ public class Decodificacao {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return resultado;
     }
 }
