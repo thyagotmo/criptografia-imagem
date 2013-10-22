@@ -24,8 +24,8 @@ public class TelaDescriptografia extends javax.swing.JFrame {
         
        setTitle("Projeto Internet Web");
        setResizable(false);
+       initComponents();
        setLocationRelativeTo(null);   
-        initComponents();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("BMP Images", "bmp");
         jFileChooser1.setFileFilter(filter);
         
