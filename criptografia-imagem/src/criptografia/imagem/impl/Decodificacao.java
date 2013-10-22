@@ -61,17 +61,18 @@ public class Decodificacao {
                         valorCompararAzul = mediaAzul + 20;
                     }
 
-
-
-                    if (corPixel.getGreen() == valorCompararVerde && corPixel.getBlue() == valorCompararAzul) {
-
-                        //media dos verdes 
+                        //media dos vermelho 
                         int mediaRed = (corAnterior.getRed() + corPosterior.getRed()) / 2;
 
                         int valorRedComMedia = corPixel.getRed();
 
-                        int numero;
+                        
 
+                    if (corPixel.getGreen() == valorCompararVerde && corPixel.getBlue() == valorCompararAzul && valorRedComMedia>=mediaRed-26 && valorRedComMedia<=mediaRed+26) {
+
+                       int numero;
+                       
+                         //media dos vermelho 
                         if (mediaRed > 128) {
                             numero = mediaRed - valorRedComMedia;
 

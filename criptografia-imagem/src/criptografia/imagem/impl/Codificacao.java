@@ -78,8 +78,7 @@ public class Codificacao {
                 int green = corAlvo.getGreen();
                 int blue = corAlvo.getBlue();
                 int alpha = corAlvo.getAlpha();
-
-
+                
                 //media dos vermelhos 
                 int mediaVermelhos = (corAnterior.getRed() + corPosterior.getRed()) / 2;
 
