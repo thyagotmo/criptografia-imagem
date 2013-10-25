@@ -6,7 +6,8 @@ package criptografia.imagem.impl;
 
 /**
  *
- * @author Thy
+ * @author Daniel
+ * 
  */
 public class Main {
 
