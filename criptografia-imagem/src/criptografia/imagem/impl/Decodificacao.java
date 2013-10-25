@@ -12,7 +12,8 @@ import javax.imageio.ImageIO;
 
 /**
  *
- * @author Thy
+ * @author Daniel
+ *
  */
 public class Decodificacao {
 
@@ -20,84 +21,56 @@ public class Decodificacao {
 
         File file = new File(origem);
         String resultado = "";
+        int i = -1, j = -1;
         try {
             BufferedImage imagem = ImageIO.read(file);
 
             int widht = imagem.getWidth(); //linha (varia��o X)
             int height = imagem.getHeight(); // coluna (varia��o Y)
+            int tamanhoImagem = widht * height;
+
+            
+
+            for (int ifor = 1; ifor < tamanhoImagem; ifor += 113) {
+
+                i = (ifor / widht);
+                j = ifor - (widht * i);
+                int rgbAnterior = imagem.getRGB(j - 1, i);
+                int rgbPixel = imagem.getRGB(j, i);
+                int rgbPosterior = imagem.getRGB(j + 1, i);
+
+                Color corAnterior = new Color(rgbAnterior);
+                Color corPixel = new Color(rgbPixel);
+                Color corPosterior = new Color(rgbPosterior);
 
 
-            for (int i = 0; i < height; i++) {
+                //media dos vermelho 
+                int mediaRed = (corAnterior.getRed() + corPosterior.getRed()) / 2;
 
-                for (int j = 1; j < widht - 1; j++) {
-
-                    int rgbAnterior = imagem.getRGB(j - 1, i);
-                    int rgbPixel = imagem.getRGB(j, i);
-                    int rgbPosterior = imagem.getRGB(j + 1, i);
-
-                    Color corAnterior = new Color(rgbAnterior);
-                    Color corPixel = new Color(rgbPixel);
-                    Color corPosterior = new Color(rgbPosterior);
+                int valorRedComMedia = corPixel.getRed();
 
 
-                    //media dos verdes 
-                    int mediaVerdes = (corAnterior.getGreen() + corPosterior.getGreen()) / 2;
+                int numero;
 
-                    //media dos azul 
-                    int mediaAzul = (corAnterior.getBlue() + corPosterior.getBlue()) / 2;
+                //media dos vermelho 
+                if (mediaRed > 128) {
+                    numero = mediaRed - valorRedComMedia;
 
-                    int valorCompararVerde;
-                    int valorCompararAzul;
-
-                    if (mediaVerdes > 128) {
-                        valorCompararVerde = mediaVerdes - 20;
-                    } else {
-                        valorCompararVerde = mediaVerdes + 20;
-                    }
-
-                    if (mediaAzul > 128) {
-                        valorCompararAzul = mediaAzul - 20;
-                    } else {
-                        valorCompararAzul = mediaAzul + 20;
-                    }
-
-                        //media dos vermelho 
-                        int mediaRed = (corAnterior.getRed() + corPosterior.getRed()) / 2;
-
-                        int valorRedComMedia = corPixel.getRed();
-
-                        
-
-                    if (corPixel.getGreen() == valorCompararVerde && corPixel.getBlue() == valorCompararAzul && valorRedComMedia>=mediaRed-26 && valorRedComMedia<=mediaRed+26) {
-
-                       int numero;
-                       
-                         //media dos vermelho 
-                        if (mediaRed > 128) {
-                            numero = mediaRed - valorRedComMedia;
-
-                        } else {
-                            numero = valorRedComMedia - mediaRed;
-
-                        }
-                        numero += 65;
-
-                        char letra = (char) numero;
-
-                        resultado += letra;
-
-
-                    }
+                } else {
+                    numero = valorRedComMedia - mediaRed;
 
                 }
+                numero += 65;
 
+                char letra = (char) numero;
+
+                resultado += letra;
 
             }
 
-
-
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            System.out.println(i + " - " + j);
         }
 
         return resultado;
