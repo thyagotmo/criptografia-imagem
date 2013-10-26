@@ -7,7 +7,6 @@ package criptografia.imagem.impl;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import javax.imageio.ImageIO;
 
 /**
@@ -18,10 +17,12 @@ import javax.imageio.ImageIO;
 public class Decodificacao {
 
     public String decodificacao(String origem) {
-
+        
+        boolean bfinal=false;
         File file = new File(origem);
         String resultado = "";
         int i = -1, j = -1;
+        ;
         try {
             BufferedImage imagem = ImageIO.read(file);
 
@@ -31,7 +32,7 @@ public class Decodificacao {
 
             
 
-            for (int ifor = 1; ifor < tamanhoImagem; ifor += 113) {
+            for (int ifor = 2; ifor < tamanhoImagem; ifor += 113) {
 
                 i = (ifor / widht);
                 j = ifor - (widht * i);
@@ -60,10 +61,11 @@ public class Decodificacao {
                     numero = valorRedComMedia - mediaRed;
 
                 }
-                numero += 65;
+                numero += 62;
 
                 char letra = (char) numero;
-
+                if(letra=='@'){letra=' ';}
+                if(letra=='?'){break;}
                 resultado += letra;
 
             }
@@ -72,7 +74,8 @@ public class Decodificacao {
             e.printStackTrace();
             System.out.println(i + " - " + j);
         }
-
-        return resultado;
-    }
+        
+        
+        return resultado.toLowerCase();}
+    
 }
