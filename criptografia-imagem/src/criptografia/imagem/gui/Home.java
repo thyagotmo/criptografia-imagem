@@ -4,8 +4,7 @@
  */
 package criptografia.imagem.gui;
 
-import java.awt.Color;
-import java.awt.ComponentOrientation;
+
 
 /**
  *

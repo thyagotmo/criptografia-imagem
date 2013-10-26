@@ -20,7 +20,7 @@ public class Codificacao {
             
         
         File file = new File(origem);
-
+        char letra;
         
        
 
@@ -32,12 +32,20 @@ public class Codificacao {
 
             
             int quantidadeLetras = texto.length();
+            texto=texto+"?";
             int vezes=0;
-            for(int ifor =1;vezes<quantidadeLetras;ifor+=113){
+            
+            
+            
+            
+            for(int ifor =2;vezes<quantidadeLetras+1;ifor+=113){
 
                 
-                int i = (ifor/widht);
-                int j =  ifor - (widht *i);
+                    
+                    
+                    
+                 int i = (ifor/widht);
+                 int j =  ifor - (widht *i);
                 
                 
 
@@ -60,13 +68,26 @@ public class Codificacao {
                 //media dos vermelhos 
                 int mediaVermelhos = (corAnterior.getRed() + corPosterior.getRed()) / 2;
 
-               
+                
+                letra=texto.charAt(vezes);               
+                if(letra==' '){letra='@';}
+                if(letra>90){
                 if (mediaVermelhos > 128) {
-                    red = mediaVermelhos - (texto.charAt(vezes) - 65);
+                    red = mediaVermelhos - (letra - 94);
 
                 } else {
-                    red = mediaVermelhos + (texto.charAt(vezes) - 65);
+                    red = mediaVermelhos + (letra - 94);
                 }
+                
+                
+                }
+                else{
+                if (mediaVermelhos > 128) {
+                    red = mediaVermelhos - (letra - 62);
+
+                } else {
+                    red = mediaVermelhos + (letra - 62);
+                }}
 
 
             
