@@ -1,0 +1,1 @@
+Criptografia de um texto em uma imagem
